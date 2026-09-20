@@ -1,6 +1,80 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>FNAF 2 - Mobil</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-user-select: none; }
+        body { background: #000; color: #fff; font-family: monospace; overflow: hidden; height: 100vh; display: flex; justify-content: center; align-items: center; }
+        
+        #game-container { width: 100vw; height: 100vh; position: relative; background: #111; overflow: hidden; }
+        
+        /* Ofis Görünümü */
+        #office { width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: #1a1a1a; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 20px; }
+        
+        .top-bar { display: flex; justify-content: space-between; width: 100%; font-size: 18px; }
+        .center-light-btn { background: #333; border: 2px solid #fff; color: #fff; padding: 10px 20px; font-weight: bold; border-radius: 8px; cursor: pointer; }
+        
+        /* Kameralar Ekranı */
+        #camera-view { width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: #002200; display: none; flex-direction: column; justify-content: space-between; padding: 20px; z-index: 10; }
+        .cam-header { display: flex; justify-content: space-between; font-size: 20px; color: #0f0; }
+        
+        /* Monitör / Kamera Açma Butonu (Alt Kısım) */
+        #monitor-button-area { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 200px; height: 40px; background: rgba(255,255,255,0.2); border-top-left-radius: 10px; border-top-right-radius: 10px; cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 14px; z-index: 20; }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <!-- OFİS -->
+        <div id="office">
+            <div class="top-bar">
+                <div id="flashlight">Fener: 100%</div>
+                <div id="time">12 AM</div>
+            </div>
+            <button class="center-light-btn" onclick="toggleLight()">ORTA FENER (BASILI TUT)</button>
+            <div style="height: 50px;"></div>
+        </div>
+
+        <!-- KAMERA EKRANI -->
+        <div id="camera-view">
+            <div class="cam-header">
+                <span id="cam-title">KAMERA: CAM 01 - Sahne</span>
+                <span id="cam-time">12 AM</span>
+            </div>
+            <div style="text-align: center; color: #0f0; font-size: 24px; margin: auto;">[ KAMERA GÖRÜNTÜSÜ ]</div>
+            <div style="text-align: center; color: #888; font-size: 12px;">Kamerayı kapatmak için alttaki tuşa basın</div>
+        </div>
+
+        <!-- ALT MONİTÖR / KAMERA AÇMA-KAPAMA ÇUBUĞU -->
+        <div id="monitor-button-area" onclick="toggleCamera()">MONİTÖRÜ AÇ / KAPAT</div>
+    </div>
+
+    <script>
+        let isCameraOpen = false;
+
+        function toggleCamera() {
+            isCameraOpen = !isCameraOpen;
+            const camView = document.getElementById('camera-view');
+            
+            if (isCameraOpen) {
+                camView.style.display = 'flex';
+            } else {
+                camView.style.display = 'none';
+            }
+        }
+
+        function toggleLight() {
+            // Fener açma kapama mantığı buraya eklenebilir
+            console.log('Fener tıklandı');
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>FNAF 2 - Animated Mask & Camera</title>
